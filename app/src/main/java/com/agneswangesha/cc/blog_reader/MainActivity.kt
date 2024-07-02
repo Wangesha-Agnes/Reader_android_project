@@ -13,11 +13,23 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setContentView(R.layout.activity_main)
         binding.rvReader.layoutManager = LinearLayoutManager(this)
+        displayReader()
+    }
+
+    fun displayReader(){
+        val reader1 = Reader("Plato","","My home","11th May 2011","This novel explores the lives of Palestinian Americans in Baltimore through",
+                " linked stories, focusing on themes of cultural identity, hope, and disappointment " ,"https://dribbble.com/shots/23220196-Modern-Ecommerce-Website-UI-Design")
+        val reader2 = Reader("Plato","","My home","11th May 2011","This novel explores the lives of Palestinian Americans in Baltimore through",
+                " linked stories, focusing on themes of cultural identity, hope, and disappointment " ,"https://dribbble.com/shots/23220196-Modern-Ecommerce-Website-UI-Design")
+        val reader3 = Reader("Plato","","My home","11th May 2011","This novel explores the lives of Palestinian Americans in Baltimore through",
+                " linked stories, focusing on themes of cultural identity, hope, and disappointment " ,"https://dribbble.com/shots/23220196-Modern-Ecommerce-Website-UI-Design")
 
 
-
+        val readers= listOf(reader1,reader2,reader3)
+        val readerAdapter=ReaderAdapter(readers)
+        binding.rvReader.adapter=readerAdapter
     }
 }
